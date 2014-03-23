@@ -8,7 +8,7 @@ reads data from files into an R data frame.
 Reads data from several types of data storage types into an R data frame.
 }
 \usage{
-read_data(filepath, type=c("csv","delim","folder"), index=NULL, ...)
+read_data(filepath, type=c("csv","delim","folder"), index=NULL, indexHead=FALSE, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -20,6 +20,9 @@ Character vector specifying the file type. Options include \code{csv}, \code{del
 }
   \item{index}{
 The path to a CSV file specifying the training label of each file in the folder of text files, one per line. An example of one line would be \code{1.txt,1}. Do not include the full file path for each file, that will be handled automatically using the folder location passed into \code{filepath}. This index file must be located outside the folder of files.
+}
+  \item{indexHead}{
+Logical argument that indicates whether the index file has header information. If present, this header information is not used, but this argument allows the index file to load without error. 
 }
   \item{\dots}{
 Other arguments passed to R's \code{read.csv} function.
