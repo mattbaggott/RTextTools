@@ -1,11 +1,12 @@
-read_data <-
-function(filepath, type=c("csv","delim","folder"), index=NULL, ...) {    
-    if (type=="csv") { data <- read.csv(filepath,...) # CSV FILES
-    } else if (type=="delim") { data <- read.delim(filepath,...) # TAB-DELIMITED FILES
-	} else if (type=="folder") { 
-        if (is.null(index)) stop("Must supply an index if using the folder option.")
-        
-        labels <- read.csv(index,header=FALSE)
+read_data 
+  <-  function(filepath, type=c("csv","delim","folder"), index=NULL, indexHead=FALSE, ...) {
+  if (type=="csv") { data <- read.csv(filepath,...) # CSV FILES
+  } else if (type=="delim") { data <- read.delim(filepath,...) # TAB-DELIMITED FILES
+  } else if (type=="folder") {
+    if (is.null(index)) stop("Must supply an index if using the folder option.")
+    
+    labels <- read.csv(index,header=indexHead) # changed to allow headers 
+
         files <- list.files(path=filepath,full.names=TRUE)
         
         frame <- c()
